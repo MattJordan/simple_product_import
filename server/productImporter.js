@@ -134,6 +134,7 @@ ProductImporter.createTopLevelProduct = function (product) {
   });
   let minPrice = minPricedProduct.price;
   let prod = {};
+  prod._id = baseProduct.productId;
   prod.ancestors = [];
   prod.shopId = ReactionCore.getShopId();
   prod.title = baseProduct.productTitle;
@@ -141,7 +142,7 @@ ProductImporter.createTopLevelProduct = function (product) {
   prod.pageTitle = baseProduct.pageTitle;
   prod.handle = baseProduct.handle.toLowerCase().trim();
   prod.handle = prod.handle.replace(/\s/, '-');
-  prod.isVisible = false;
+  prod.isVisible = true;
   prod.description = baseProduct.description;
   prod.type = baseProduct.topProductType || 'simple';
   prod.price = {};
@@ -203,7 +204,7 @@ ProductImporter.createMidLevelVariant = function (variant, ancestors) {
   }, 0);
   let prod = {};
   prod.ancestors = ancestors;
-  prod.isVisible = false;
+  prod.isVisible = true;
   prod.type = baseVariant.variantType || 'variant';
   prod.title = baseVariant.variantTitle;
   prod.price = baseVariant.price;
@@ -234,7 +235,7 @@ ProductImporter.createVariant = function (variant, ancestors) {
   check(ancestors, [String]);
   let prod = {};
   prod.ancestors = ancestors;
-  prod.isVisible = false;
+  prod.isVisible = true;
   prod.type = variant.variantType || 'variant';
   prod.title = variant.title;
   prod.optionTitle = variant.optionTitle;
